@@ -13,10 +13,10 @@
 	--color-border: rgb(24 24 27 / 0.1);
 	--color-hover: rgb(24 24 27 / 0.04);
 
-	--color-accent: #3b82f6;
+	--color-accent: #2563eb;
 	--color-accent-content: #2563eb;
 	--color-accent-foreground: #ffffff;
-	--color-accent-soft: rgb(59 130 246 / 0.12);
+	--color-accent-soft: rgb(37 99 235 / 0.12);
 
 	--color-header-bg: rgb(250 250 250 / 0.78);
 	--color-dropdown-shadow: 0 24px 80px rgb(24 24 27 / 0.12);
@@ -35,10 +35,10 @@ html[data-theme="dark"] {
 	--color-border: rgb(255 255 255 / 0.08);
 	--color-hover: rgb(255 255 255 / 0.05);
 
-	--color-accent: #3b82f6;
+	--color-accent: #2563eb;
 	--color-accent-content: #60a5fa;
 	--color-accent-foreground: #ffffff;
-	--color-accent-soft: rgb(59 130 246 / 0.16);
+	--color-accent-soft: rgb(37 99 235 / 0.16);
 
 	--color-header-bg: rgb(9 9 11 / 0.78);
 	--color-dropdown-shadow: 0 24px 80px rgb(0 0 0 / 0.35);
