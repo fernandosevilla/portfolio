@@ -10,26 +10,36 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+
+		<script is:inline>
+			const storedTheme = localStorage.getItem("theme") || "system";
+			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+			const resolvedTheme = 
+				storedTheme === "system"
+					? prefersDark
+						? "dark"
+						: "light"
+					: storedTheme;
+			
+			document.documentElement.dataset.theme = resolvedTheme;
+			document.documentElement.dataset.themeMode = storedTheme;
+		</script>
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content="Portfolio de Fernando Sevilla Espinosa, desarrollador multiplataforma" />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="min-h-screen bg-(--color-bg) text-(--color-text) antialiased" >
+		<Header />
+		<main class="mx-auto w-full max-w-7xl px-4 pt-28 sm:px-6 lg:px-8">
+			<slot />
+		</main>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
