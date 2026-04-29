@@ -1,0 +1,237 @@
+---
+import { Image } from "astro:assets";
+
+interface GalleryItem {
+    image: ImageMetadata;
+    alt?: string;
+    caption?: string;
+}
+
+interface Props {
+    slug: string;
+    title: string;
+    cover?: ImageMetadata;
+    coverAlt?: string;
+    gallery?: GalleryItem[];
+}
+
+const { slug, title, cover, coverAlt, gallery = [] } = Astro.props;
+
+const images = [
+    ...(cover
+        ? [
+              {
+                  src: cover,
+                  alt: coverAlt ?? `Imagen principal de ${title}`,
+                  caption: undefined,
+              },
+          ]
+        : []),
+    ...gallery.map((item) => ({
+        src: item.image,
+        alt: item.alt ?? `Imagen de ${title}`,
+        caption: item.caption,
+    })),
+];
+
+const carouselId = `project-gallery-${slug}`;
+const hasMultipleImages = images.length > 1;
+---
+
+{
+    images.length > 0 && (
+        <section class="mt-10" aria-label={`Galería del proyecto ${title}`}>
+            {!hasMultipleImages ? (
+                <div class="overflow-hidden rounded-3xl border border-(--color-border) bg-(--color-surface)">
+                    <figure>
+                        <Image
+                            src={images[0].src}
+                            alt={images[0].alt}
+                            loading="eager"
+                            decoding="sync"
+                            fetchpriority="high"
+                            class="h-auto w-full object-cover"
+                        />
+
+                        {images[0].caption && (
+                            <figcaption class="border-t border-(--color-border) px-4 py-3 text-sm text-(--color-muted)">
+                                {images[0].caption}
+                            </figcaption>
+                        )}
+                    </figure>
+                </div>
+            ) : (
+                <div id={carouselId} data-carousel class="relative">
+                    <div class="overflow-hidden rounded-3xl border border-(--color-border) bg-(--color-surface)">
+                        <div
+                            data-carousel-track
+                            class="flex transition-transform duration-300 ease-out"
+                        >
+                            {images.map((item, index) => (
+                                <figure class="min-w-full">
+                                    <Image
+                                        src={item.src}
+                                        alt={item.alt}
+                                        loading="eager"
+                                        decoding={
+                                            index === 0 ? "sync" : "async"
+                                        }
+                                        fetchpriority={
+                                            index === 0 ? "high" : "low"
+                                        }
+                                        sizes="(min-width: 1024px) 896px, calc(100vw - 2rem)"
+                                        class="h-auto w-full object-cover"
+                                    />
+
+                                    {item.caption && (
+                                        <figcaption class="border-t border-(--color-border) px-4 py-3 text-sm text-(--color-muted)">
+                                            {item.caption}
+                                        </figcaption>
+                                    )}
+                                </figure>
+                            ))}
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        data-carousel-prev
+                        class="absolute top-1/2 left-3 z-10 -translate-y-1/2 rounded-full border border-(--color-border)
+								bg-(--color-surface)/90 p-2 text-(--color-text) shadow-sm backdrop-blur
+								transition hover:bg-(--color-surface-muted)"
+                        aria-label="Imagen anterior"
+                    >
+                        <svg
+                            class="size-5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M15 6 9 12l6 6"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <button
+                        type="button"
+                        data-carousel-next
+                        class="absolute top-1/2 right-3 z-10 -translate-y-1/2 rounded-full border border-(--color-border)
+								bg-(--color-surface)/90 p-2 text-(--color-text) shadow-sm backdrop-blur
+								transition hover:bg-(--color-surface-muted)"
+                        aria-label="Siguiente imagen"
+                    >
+                        <svg
+                            class="size-5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="m9 6 6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <div class="mt-4 flex items-center justify-center gap-2">
+                        {images.map((_, index) => (
+                            <button
+                                type="button"
+                                data-carousel-dot
+                                data-index={index}
+                                class="carousel-dot"
+                                aria-label={`Ir a la imagen ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
+        </section>
+    )
+}
+
+<script>
+    const carousels = document.querySelectorAll<HTMLElement>("[data-carousel]");
+
+    carousels.forEach((carousel) => {
+        if (carousel.dataset.initialized === "true") return;
+        carousel.dataset.initialized = "true";
+
+        const track = carousel.querySelector<HTMLElement>(
+            "[data-carousel-track]",
+        );
+        const prevButton = carousel.querySelector<HTMLButtonElement>(
+            "[data-carousel-prev]",
+        );
+        const nextButton = carousel.querySelector<HTMLButtonElement>(
+            "[data-carousel-next]",
+        );
+        const dots = Array.from(
+            carousel.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]"),
+        );
+
+        if (!track || dots.length === 0) return;
+
+        let currentIndex = 0;
+        const totalSlides = dots.length;
+
+        const updateCarousel = () => {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                const isActive = index === currentIndex;
+
+                dot.dataset.active = String(isActive);
+                dot.setAttribute("aria-current", isActive ? "true" : "false");
+            });
+        };
+
+        prevButton?.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        nextButton?.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        updateCarousel();
+    });
+</script>
+
+<style>
+    .carousel-dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 9999px;
+        border: 1px solid var(--color-border);
+        background: var(--color-surface-muted);
+        transition:
+            transform 0.2s ease,
+            background-color 0.2s ease,
+            opacity 0.2s ease;
+        opacity: 0.7;
+    }
+
+    .carousel-dot[data-active="true"] {
+        background: var(--color-accent);
+        opacity: 1;
+        transform: scale(1.1);
+    }
+</style>
