@@ -1,21 +1,14 @@
 ---
-const projects = [
-	{
-		title: "Portfolio personal",
-		description: "Astro, Tailwind y contenido en Markdown",
-		href: "/proyectos/portfolio",
-	},
-	{
-		title: "5RRHH",
-		description: "Aplicación web de recursos humanos",
-		href: "/proyectos/5rrhh",
-	},
-	{
-		title: "API a3factura",
-		description: "Integración API con ERP interno",
-		href: "/proyectos/api-a3factura",
-	},
-];
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection('projects'))
+	.filter((project) => project.data.showInMenu)
+	.sort((a, b) => a.data.order - b.data.order)
+	.map((project) => ({
+		title: project.data.title,
+		description: project.data.menuDescription ?? project.data.description,
+		href: `/proyectos/${project.data.slug}`,
+	}));
 ---
 
 <header
