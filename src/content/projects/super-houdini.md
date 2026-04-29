@@ -2,6 +2,7 @@
 title: 'Super Houdini'
 slug: 'super-houdini'
 description: 'Gestor de contraseñas seguro desarrollado con Laravel, Livewire y MySQL, con zonas compartidas, enlaces temporales y rotación automática de credenciales.'
+menuDescription: 'Gestor de contraseñas con Laravel'
 technologies:
   - 'Laravel'
   - 'PHP'

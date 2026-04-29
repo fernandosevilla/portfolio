@@ -2,6 +2,7 @@
 title: 'Portfolio personal'
 slug: 'portfolio'
 description: 'Portfolio desarrollado con Astro, Tailwind CSS y contenido en Markdown, desplegado en VPS con Nginx.'
+menuDescription: 'Astro, Tailwind y contenido en Markdown'
 technologies:
   - 'Astro'
   - 'Tailwind CSS'

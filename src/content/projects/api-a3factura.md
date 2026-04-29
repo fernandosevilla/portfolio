@@ -2,6 +2,7 @@
 title: 'API a3factura'
 slug: 'api-a3factura'
 description: 'API de integración entre a3factura y el ERP interno +Five, orientada a conectar sistemas empresariales y automatizar procesos de alta y configuración.'
+menuDescription: 'Integración API con ERP interno'
 technologies:
   - 'Laravel'
   - 'PHP'

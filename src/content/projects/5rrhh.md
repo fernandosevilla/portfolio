@@ -2,6 +2,7 @@
 title: '5RRHH'
 slug: '5rrhh'
 description: 'Aplicación web de recursos humanos para empresas, centrada en la gestión interna, mantenimiento de funcionalidades y mejora continua del producto.'
+menuDescription: 'Aplicación web de recursos humanos'
 technologies:
   - 'Laravel'
   - 'PHP'

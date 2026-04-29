@@ -13,6 +13,7 @@ const projects = defineCollection({
 			title: z.string(),
 			slug: z.string(),
 			description: z.string(),
+			menuDescription: z.string().optional(),
 			technologies: z.array(z.string()).default([]),
 			order: z.number().default(999),
 			showInMenu: z.boolean().default(false),
