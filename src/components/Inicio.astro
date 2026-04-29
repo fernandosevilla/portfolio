@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import avatar from '../assets/fernando_sevilla.webp';
+
 const highlights = [
     'Laravel',
     'PHP',
@@ -17,128 +20,212 @@ const socialLinks = [
     {
         label: 'GitHub',
         href: 'https://github.com/fernandosevilla/',
+        icon: 'github',
     },
     {
         label: 'LinkedIn',
         href: 'https://www.linkedin.com/in/fernandosevillaespinosa/',
+        icon: 'linkedin',
     },
-]
+];
+
+const focusItems = [
+    {
+        number: '01',
+        title: 'Crear',
+        description: 'Aplicaciones web desde cero.',
+    },
+    {
+        number: '02',
+        title: 'Integrar',
+        description: 'APIs, servicios externos y sistemas internos.',
+    },
+    {
+        number: '03',
+        title: 'Mantener',
+        description: 'Código existente, mejoras e incidencias reales.',
+    },
+];
 ---
 
 <section
-	id="inicio"
-	class="grid min-h-[calc(100vh-7rem)] gap-12 py-12 lg:items-center lg:py-20 lg:grid-cols-[1.15fr_0.85fr]"
+    id="inicio"
+    class="grid min-h-[calc(100vh-7rem)] gap-12 py-24 lg:items-center lg:grid-cols-[1.15fr_0.85fr]"
 >
-	<div class="mt-6 justify-self-center lg:col-span-2 lg:mt-0">
-		<div
-			class="inline-flex items-center gap-2 rounded-full border border-(--color-border)
-				bg-(--color-surface) px-4 py-2 text-sm font-medium text-(--color-muted)"
-		>
-			<span class="size-2 rounded-full bg-(--color-accent)"></span>
-			Disponible para nuevos proyectos
-		</div>
-	</div>
+    <div class="flex items-center gap-5 lg:col-span-2">
+        <Image
+            src={avatar}
+            alt="Fernando Sevilla"
+            width={72}
+            height={72}
+            loading="eager"
+            decoding="async"
+            class="size-18 rounded-full border-4 border-(--color-surface-muted) object-cover shadow-xl shadow-black/20"
+        />
 
-	<div>
-		<h1
-			class="max-w-4xl text-center text-4xl font-bold tracking-tight text-(--color-text)
-				sm:text-5xl lg:text-6xl"
-		>
-            Construyo aplicaciones y herramientas que hacen el trabajo más sencillo.
-		</h1>
-        
-		<p class="mt-6 max-w-2xl text-lg leading-8 text-(--color-muted) text-center">
+        <div
+            class="inline-flex items-center gap-2 rounded-full border border-(--color-border)
+                bg-(--color-surface) px-4 py-2 text-sm font-medium text-(--color-muted)"
+        >
+            <span class="size-2 rounded-full bg-(--color-accent)"></span>
+            Disponible para nuevos proyectos
+        </div>
+    </div>
+
+    <div>
+        <h1
+            class="max-w-4xl text-5xl font-bold tracking-tight text-(--color-text)
+                sm:text-6xl lg:text-7xl"
+        >
+            Construyo aplicaciones y herramientas para facilitar tu día a día.
+        </h1>
+
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-(--color-muted)">
             Soy Fernando Sevilla, desarrollador de software. Me gusta crear productos
             bien pensados, fáciles de mantener y conectados con las necesidades reales
             de cada proyecto.
-		</p>
+        </p>
 
-		<div class="mt-8 flex flex-col md:items-center md:justify-center gap-3 sm:flex-row">
-			<a
-				href="#proyectos"
-				class="inline-flex items-center justify-center rounded-2xl bg-(--color-accent)
-					px-6 py-3 text-base font-semibold text-(--color-accent-foreground)
-					transition hover:opacity-90"
-			>
-				Ver proyectos
-			</a>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+                href="#proyectos"
+                class="group inline-flex items-center justify-center gap-3 rounded-2xl bg-(--color-accent)
+                    px-7 py-3.5 text-base font-semibold text-(--color-accent-foreground)
+                    transition hover:opacity-90"
+            >
+                Ver proyectos
 
-			<a
-				href="#contacto"
-				class="inline-flex items-center justify-center rounded-2xl border border-(--color-border)
-					bg-(--color-surface) px-6 py-3 text-base font-semibold text-(--color-text)
-					transition hover:bg-(--color-hover)"
-			>
-				Contactar
-			</a>
-		</div>
+                <svg
+                    class="size-5 transition group-hover:translate-x-1"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M5 12h14m-6-6 6 6-6 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
 
-		<div class="mt-10 flex flex-wrap gap-3 items-center">
-			{
-				highlights.map((item) => (
-					<span
-						class="rounded-full border border-(--color-border) bg-(--color-surface-muted)
-							px-3 py-1 text-sm font-medium text-(--color-muted)"
-					>
-						{item}
-					</span>
-				))
-			}
-		</div>
-	</div>
+            <a
+                href="#contacto"
+                class="group inline-flex items-center justify-center gap-3 rounded-2xl border border-(--color-border)
+                    bg-(--color-surface) px-7 py-3.5 text-base font-semibold text-(--color-text)
+                    transition hover:bg-(--color-hover)"
+            >
+                Contactar
+
+                <svg
+                    class="size-5 text-(--color-muted) transition group-hover:translate-x-1"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M5 12h14m-6-6 6 6-6 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </a>
+        </div>
+
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+            {
+                highlights.map((item) => (
+                    <span
+                        class="rounded-full border border-(--color-border) bg-(--color-surface-muted)
+                            px-4 py-1.5 text-sm font-medium text-(--color-muted)"
+                    >
+                        {item}
+                    </span>
+                ))
+            }
+        </div>
+    </div>
 
     <aside
         class="rounded-3xl border border-(--color-border) bg-(--color-surface)
-            p-6 shadow-2xl shadow-black/5"
+            p-6 shadow-2xl shadow-black/10 lg:p-8"
     >
-        <div class="space-y-1">
-            <p class="text-sm font-medium text-(--color-muted)">Enfoque</p>
-            <h2 class="text-2xl font-bold tracking-tight text-(--color-text)">
+        <div class="space-y-2">
+            <p class="text-sm font-medium text-(--color-accent-content)">Enfoque</p>
+
+            <h2 class="text-2xl font-bold tracking-tight text-(--color-text) sm:text-3xl">
                 Producto, código y negocio.
             </h2>
         </div>
 
-        <div class="mt-6 grid gap-3">
-            <div class="rounded-2xl bg-(--color-surface-muted) p-4">
-                <p class="text-sm font-semibold text-(--color-text)">01 · Crear</p>
-                <p class="mt-1 text-sm text-(--color-muted)">
-                    Aplicaciones web desde cero.
-                </p>
-            </div>
+        <div class="mt-7 grid gap-3">
+            {
+                focusItems.map((item) => (
+                    <div
+                        class="rounded-2xl border border-(--color-border) bg-(--color-surface-muted)
+                            p-5 transition hover:bg-(--color-hover)"
+                    >
+                        <p class="text-base font-semibold text-(--color-text)">
+                            <span class="text-(--color-accent-content)">{item.number}</span>
+                            {' · '}
+                            {item.title}
+                        </p>
 
-            <div class="rounded-2xl bg-(--color-surface-muted) p-4">
-                <p class="text-sm font-semibold text-(--color-text)">02 · Integrar</p>
-                <p class="mt-1 text-sm text-(--color-muted)">
-                    APIs, servicios externos y sistemas internos.
-                </p>
-            </div>
-
-            <div class="rounded-2xl bg-(--color-surface-muted) p-4">
-                <p class="text-sm font-semibold text-(--color-text)">03 · Mantener</p>
-                <p class="mt-1 text-sm text-(--color-muted)">
-                    Código existente, mejoras e incidencias reales.
-                </p>
-            </div>
+                        <p class="mt-2 text-sm leading-6 text-(--color-muted)">
+                            {item.description}
+                        </p>
+                    </div>
+                ))
+            }
         </div>
 
-        <div class="mt-6 border-t border-(--color-border) pt-5">
-            <p
-                class="text-sm font-medium text-(--color-muted) text-center"
-            >
+        <div class="mt-7 border-t border-(--color-border) pt-6">
+            <p class="text-center text-sm font-medium text-(--color-muted)">
                 También puedes encontrarme en:
             </p>
 
-            <div class="mt-3 grid grid-cols-2 gap-3">
+            <div class="mt-4 grid grid-cols-2 gap-3">
                 {
                     socialLinks.map((link) => (
                         <a
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center rounded-xl border border-(--color-border)
-                                px-4 py-3 text-center text-sm font-semibold text-(--color-accent-content)
-                                transition hover:bg-(--color-accent-soft)"
+                            aria-label={`Abrir perfil de ${link.label}`}
+                            class="inline-flex items-center justify-center gap-2 rounded-xl border border-(--color-border)
+                                bg-(--color-surface) px-4 py-3 text-center text-sm font-semibold
+                                text-(--color-accent-content) transition hover:bg-(--color-accent-soft)"
                         >
+                            {
+                                link.icon === 'github' && (
+                                    <svg
+                                        class="size-4"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18A10.9 10.9 0 0 1 12 6.17c.97 0 1.95.13 2.86.39 2.18-1.49 3.14-1.18 3.14-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.77 1.04.77 2.1v3.11c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                    </svg>
+                                )
+                            }
+
+                            {
+                                link.icon === 'linkedin' && (
+                                    <svg
+                                        class="size-4"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.76C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.76 24h20.47c.97 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0Z" />
+                                    </svg>
+                                )
+                            }
+
                             {link.label}
                         </a>
                     ))
