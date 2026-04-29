@@ -3,18 +3,25 @@ import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
 const projects = defineCollection({
-    loader: glob({
-        pattern: '**/*.md',
-        base: './src/content/projects',
-    }),
+	loader: glob({
+		pattern: '**/*.md',
+		base: './src/content/projects',
+	}),
 
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        technologies: z.array(z.string()).default([]),
-        order: z.number().default(999),
-        showInMenu: z.boolean().default(false)
-    }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			slug: z.string(),
+			description: z.string(),
+			technologies: z.array(z.string()).default([]),
+			order: z.number().default(999),
+			showInMenu: z.boolean().default(false),
+			featured: z.boolean().default(true),
+			repositoryUrl: z.httpUrl().optional(),
+			demoUrl: z.httpUrl().optional(),
+			cover: image().optional(),
+			coverAlt: z.string().optional(),
+		}),
 });
 
 const experiences = defineCollection({
