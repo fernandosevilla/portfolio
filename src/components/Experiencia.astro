@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+
+const experiences = (await getCollection('experiences')).sort(
+    (a, b) => a.data.order - b.data.order
+);
+---
+
+<section id="experiencia" class="py-24">
+	<div class="grid gap-14 lg:grid-cols-[18rem_1fr] lg:items-start xl:gap-20">
+		<div>
+			<p class="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-(--color-muted)">
+				Experiencia
+			</p>
+
+			<h2
+				id="experience-title"
+				class="text-3xl font-semibold tracking-tight text-(--color-text) sm:text-4xl"
+			>
+				Experiencia profesional
+			</h2>
+
+			<p class="mt-4 max-w-xl text-base leading-7 text-(--color-muted)">
+				He trabajado en proyectos reales de desarrollo web, integración de sistemas,
+				mantenimiento de software empresarial y soporte técnico.
+			</p>
+		</div>
+
+		<div class="space-y-6">
+			{
+				experiences.map((experience) => (
+					<article
+						class="rounded-3xl border border-(--color-border)
+							bg-(--color-surface) p-6 shadow-sm transition
+							hover:border-(--color-text)/20 lg:p-7"
+					>
+						<div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+							<div>
+								<h3 class="text-xl font-semibold text-(--color-text)">
+									{experience.data.role}
+								</h3>
+
+								<p class="mt-1 text-base text-(--color-muted)">
+									{experience.data.company} · {experience.data.location}
+								</p>
+							</div>
+
+							<p class="shrink-0 text-sm font-medium text-(--color-muted)">
+								{experience.data.period}
+							</p>
+						</div>
+
+						<p class="mt-6 max-w-3xl text-base leading-7 text-(--color-muted)">
+							{experience.data.description}
+						</p>
+
+						<ul class="mt-6 space-y-3">
+							{experience.data.items.map((item) => (
+								<li class="flex gap-3 text-base leading-7 text-(--color-muted)">
+									<span
+										class="mt-3 size-1.5 shrink-0 rounded-full bg-(--color-accent)"
+										aria-hidden="true"
+									></span>
+									<span>{item}</span>
+								</li>
+							))}
+						</ul>
+
+						<div class="mt-6 flex flex-wrap gap-2">
+							{experience.data.technologies.map((technology) => (
+								<span
+									class="rounded-full border border-(--color-border)
+										bg-(--color-surface-muted) px-3 py-1 text-sm font-medium
+										text-(--color-muted)"
+								>
+									{technology}
+								</span>
+							))}
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
