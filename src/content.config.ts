@@ -17,7 +17,25 @@ const projects = defineCollection({
     }),
 });
 
+const experiences = defineCollection({
+    loader: glob({
+        pattern: '**/*.md',
+        base: './src/content/experiences',
+    }),
+
+    schema: z.object({
+        period: z.string(),
+		role: z.string(),
+		company: z.string(),
+		location: z.string(),
+		description: z.string(),
+		items: z.array(z.string()).default([]),
+		technologies: z.array(z.string()).default([]),
+		order: z.number().default(999),
+    }),
+});
+
 export const collections = {
     projects,
-
-}
+    experiences,
+};
