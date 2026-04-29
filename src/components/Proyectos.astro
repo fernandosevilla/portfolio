@@ -1,0 +1,153 @@
+---
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects"))
+    .filter((project) => project.data.featured)
+    .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="proyectos" class="py-24">
+    <div class="grid gap-14 lg:grid-cols-[18rem_1fr] lg:items-start xl:gap-20">
+        <div>
+            <p
+                class="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-(--color-muted)"
+            >
+                Proyectos
+            </p>
+
+            <h2
+                class="text-3xl font-semibold tracking-tight text-(--color-text) sm:text-4xl"
+            >
+                Proyectos destacados
+            </h2>
+
+            <p class="mt-4 max-w-xl text-base leading-7 text-(--color-muted)">
+                Una selección de proyectos donde he trabajado desarrollo web,
+                APIs, integraciones, despliegue y mantenimiento de software.
+            </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+            {
+                projects.map((project) => (
+                    <article
+                        class="flex h-full flex-col rounded-3xl border border-(--color-border)
+							bg-(--color-surface) p-6 shadow-sm transition
+							hover:-translate-y-1 hover:border-(--color-text)/20 lg:p-7"
+                    >
+                        <div class="flex flex-1 flex-col">
+                            <h3 class="text-xl font-semibold text-(--color-text)">
+                                {project.data.title}
+                            </h3>
+
+                            <p class="mt-4 text-base leading-7 text-(--color-muted)">
+                                {project.data.description}
+                            </p>
+
+                            <div class="mt-6 flex flex-wrap gap-2">
+                                {project.data.technologies.map((technology) => (
+                                    <span
+                                        class="rounded-full border border-(--color-border)
+											bg-(--color-surface-muted) px-3 py-1 text-sm font-medium
+											text-(--color-muted)"
+                                    >
+                                        {technology}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <div class="mt-auto space-y-3 pt-8">
+                                {(project.data.demoUrl ||
+                                    project.data.repositoryUrl) && (
+                                    <div
+                                        class={`grid gap-3 ${
+                                            project.data.demoUrl &&
+                                            project.data.repositoryUrl
+                                                ? "sm:grid-cols-2"
+                                                : ""
+                                        }`}
+                                    >
+                                        {project.data.demoUrl && (
+                                            <a
+                                                href={project.data.demoUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="inline-flex w-full items-center justify-center gap-2 rounded-xl
+                                                    border border-(--color-border) bg-(--color-surface-muted)
+                                                    px-4 py-2.5 text-sm font-semibold text-(--color-muted)
+                                                    transition hover:bg-(--color-hover) hover:text-(--color-text)"
+                                            >
+                                                Demo
+                                                <svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path
+                                                        d="M7 17 17 7m0 0H9m8 0v8"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                            </a>
+                                        )}
+
+                                        {project.data.repositoryUrl && (
+                                            <a
+                                                href={
+                                                    project.data.repositoryUrl
+                                                }
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="inline-flex w-full items-center justify-center gap-2 rounded-xl
+                                                    border border-(--color-border) bg-(--color-surface-muted)
+                                                    px-4 py-2.5 text-sm font-semibold text-(--color-muted)
+                                                    transition hover:bg-(--color-hover) hover:text-(--color-text)"
+                                            >
+                                                Repositorio
+                                                <svg
+                                                    class="size-4"
+                                                    viewBox="0 0 24 24"
+                                                    fill="currentColor"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18A10.9 10.9 0 0 1 12 6.17c.97 0 1.95.13 2.86.39 2.18-1.49 3.14-1.18 3.14-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.77 1.04.77 2.1v3.11c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                                </svg>
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
+
+                                <a
+                                    href={`/proyectos/${project.data.slug}`}
+                                    class="group inline-flex w-full items-center justify-center gap-2 rounded-xl
+                                        bg-(--color-accent) px-4 py-2.5 text-sm font-semibold
+                                        text-(--color-accent-foreground) transition hover:opacity-90"
+                                >
+                                    Ver detalles
+                                    <svg
+                                        class="size-4 transition group-hover:translate-x-1"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M5 12h14m-6-6 6 6-6 6"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
