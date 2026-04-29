@@ -16,6 +16,20 @@ showInMenu: true
 featured: true
 repositoryUrl: 'https://github.com/fernandosevilla/portfolio'
 demoUrl: 'https://fernandosevilla.dev'
+
+gallery:
+  - image: '../../assets/projects/portfolio/inicio.webp'
+    alt: 'Sección de inicio del portfolio'
+    caption: 'Sección principal con presentación, tecnologías y enlaces sociales'
+
+  - image: '../../assets/projects/portfolio/experiencia.webp'
+    alt: 'Sección de experiencia laboral'
+    caption: 'Sección de experiencia laboral cargando los datos desde contenido en Markdown'
+
+  - image: '../../assets/projects/portfolio/proyectos.webp'
+    alt: 'Sección de proyectos destacados del portfolio'
+    caption: 'Listado de proyectos cargados desde contenido en Markdown'
+
 ---
 
 ## Resumen
