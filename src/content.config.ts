@@ -22,6 +22,15 @@ const projects = defineCollection({
 			demoUrl: z.httpUrl().optional(),
 			cover: image().optional(),
 			coverAlt: z.string().optional(),
+			gallery: z
+				.array(
+					z.object({
+						image: image(),
+						alt: z.string().optional(),
+						caption: z.string().optional(),
+					}),
+				)
+				.default([]),
 		}),
 });
 
