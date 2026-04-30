@@ -1,0 +1,40 @@
+---
+const email = 'fernando.sevillaespinosa@gmail.com';
+---
+
+<section id="contacto" class="py-24">
+    <div class="mx-auto max-w-3xl text-center">
+        <p class="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-(--color-muted)">
+            Contacto
+        </p>
+
+        <h2 class="text-3xl font-semibold tracking-tight text-(--color-text) sm:text-4xl">
+            ¿Te encaja lo que has visto?
+        </h2>
+
+        <p class="mt-5 text-base leading-8 text-(--color-muted)">
+            Estoy abierto a nuevas oportunidades, proyectos y colaboraciones.
+            Puedes escribirme directamente y hablamos.
+        </p>
+
+        <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+                href={`mailto:${email}`}
+                class="rounded-2xl bg-(--color-accent) px-7 py-3.5 text-base font-semibold
+                    text-(--color-accent-foreground) transition hover:-translate-y-1 hover:opacity-90"
+            >
+                Escríbeme un email
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/fernandosevillaespinosa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-2xl border border-(--color-border) px-7 py-3.5 text-base font-semibold
+                    text-(--color-text) transition hover:-translate-y-1 hover:bg-(--color-hover)"
+            >
+                Ver LinkedIn
+            </a>
+        </div>
+    </div>
+</section>
