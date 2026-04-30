@@ -19,7 +19,13 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-const hasExternalLinks = project.data.demoUrl || project.data.repositoryUrl;
+const externalLinksCount = [
+	project.data.demoUrl,
+	project.data.repositoryUrl,
+].filter(Boolean).length;
+
+const hasExternalLinks = externalLinksCount > 0;
+const hasMultipleExternalLinks = externalLinksCount > 1;
 ---
 
 <Layout
@@ -80,7 +86,12 @@ const hasExternalLinks = project.data.demoUrl || project.data.repositoryUrl;
 				</div>
 
 				{hasExternalLinks && (
-					<div class="mt-8 grid gap-3 sm:grid-cols-2">
+					<div
+						class:list={[
+							'mt-8 grid gap-3',
+							hasMultipleExternalLinks && 'sm:grid-cols-2',
+						]}
+					>
 						{project.data.demoUrl && (
 							<a
 								href={project.data.demoUrl}
