@@ -12,8 +12,8 @@ technologies:
   - 'Vite'
   - 'Git'
 order: 1
-showInMenu: true
-featured: true
+showInMenu: false
+featured: false
 repositoryUrl: 'https://github.com/fernandosevilla/portfolio'
 demoUrl: 'https://fernandosevilla.dev'
 
