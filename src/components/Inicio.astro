@@ -50,29 +50,24 @@ const focusItems = [
 
 <section
     id="inicio"
-    class="grid min-h-[calc(100vh-7rem)] gap-12 py-24 lg:items-center lg:grid-cols-[1.15fr_0.85fr]"
+    class="grid min-h-[calc(100vh-7rem)] gap-12 py-20 lg:items-center lg:grid-cols-[1.15fr_0.85fr] lg:py-24"
 >
-    <div class="flex items-center gap-5 lg:col-span-2">
-        <Image
-            src={avatar}
-            alt="Fernando Sevilla"
-            width={72}
-            height={72}
-            loading="eager"
-            decoding="async"
-            class="size-18 rounded-full border-4 border-(--color-surface-muted) object-cover shadow-xl shadow-black/20"
-        />
-
+    <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
         <div
-            class="inline-flex items-center gap-2 rounded-full border border-(--color-border)
-                bg-(--color-surface) px-4 py-2 text-sm font-medium text-(--color-muted)"
+            class="mb-10 inline-flex rounded-full border border-(--color-border)
+                bg-(--color-surface) p-1 shadow-2xl shadow-black/20"
         >
-            <span class="size-2 rounded-full bg-(--color-accent)"></span>
-            Disponible para nuevos proyectos
+            <Image
+                src={avatar}
+                alt="Foto de Fernando Sevilla"
+                width={96}
+                height={96}
+                loading="eager"
+                decoding="async"
+                class="size-24 rounded-full border-4 border-(--color-surface-muted) object-cover"
+            />
         </div>
-    </div>
-
-    <div>
+        
         <h1
             class="max-w-4xl text-5xl font-bold tracking-tight text-(--color-text)
                 sm:text-6xl lg:text-7xl"
@@ -86,7 +81,7 @@ const focusItems = [
             de cada proyecto.
         </p>
 
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
             <a
                 href="#proyectos"
                 class="group inline-flex items-center justify-center gap-3 rounded-2xl bg-(--color-accent)
@@ -136,7 +131,7 @@ const focusItems = [
             </a>
         </div>
 
-        <div class="mt-10 flex flex-wrap items-center gap-3">
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             {
                 highlights.map((item) => (
                     <span
