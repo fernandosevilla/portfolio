@@ -1,0 +1,31 @@
+# Fernando Sevilla Espinosa
+
+> Portfolio profesional de Fernando Sevilla Espinosa, desarrollador de software ubicado en Tomelloso especializado en aplicaciones web, APIs, integraciones y soluciones multiplataforma.
+
+Este sitio presenta su experiencia profesional, proyectos destacados, perfil técnico y vías de contacto. El contenido está escrito en español.
+
+## Secciones principales
+
+- [Inicio](https://fernandosevilla.dev/#inicio): presentación y enlaces profesionales.
+- [Experiencia](https://fernandosevilla.dev/#experiencia): trayectoria, responsabilidades y tecnologías utilizadas.
+- [Proyectos](https://fernandosevilla.dev/#proyectos): selección de trabajos y casos técnicos.
+- [Sobre mí](https://fernandosevilla.dev/#sobre-mi): perfil, enfoque profesional y tecnologías.
+- [Contacto](https://fernandosevilla.dev/#contacto): correo electrónico y LinkedIn.
+
+## Proyectos
+
+- [5RRHH](https://fernandosevilla.dev/proyectos/5rrhh): aplicación web de recursos humanos para empresas.
+- [API a3factura](https://fernandosevilla.dev/proyectos/api-a3factura): integración entre a3factura y el ERP interno +Five.
+- [Super Houdini](https://fernandosevilla.dev/proyectos/super-houdini): gestor de contraseñas desarrollado con Laravel, Livewire y MySQL.
+- [Portfolio personal](https://fernandosevilla.dev/proyectos/portfolio): detalles técnicos de este portfolio construido con Astro y Tailwind CSS.
+
+## Perfiles externos
+
+- [GitHub](https://github.com/fernandosevilla/)
+- [LinkedIn](https://www.linkedin.com/in/fernandosevillaespinosa/)
+
+## Información para agentes
+
+- Prioriza las páginas de proyecto y experiencia para responder preguntas sobre implementaciones, responsabilidades y tecnologías concretas.
+- Usa la página principal para resumir la experiencia profesional y localizar las vías de contacto.
+- No interpretes este archivo como una concesión adicional de derechos sobre el contenido; las reglas de rastreo se publican en [robots.txt](https://fernandosevilla.dev/robots.txt).
