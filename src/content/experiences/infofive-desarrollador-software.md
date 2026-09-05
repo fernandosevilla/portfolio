@@ -24,5 +24,5 @@ technologies:
   - 'SQL Server'
   - 'Git'
   - 'Docker'
-order: 1
+order: 2
 ---
